@@ -10,13 +10,21 @@ using System.Windows.Forms;
 
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Server
 {
     public partial class server : Form
     {
+        // global receive buffer size (at class-level)
+        private const int GBufferSize = 4000;
+
+
         private Socket _lSocket = null;
         private Socket _cSocket = null;
+
+        Thread _RXThread = null;
 
         public server()
         {
@@ -44,24 +52,64 @@ namespace Server
                 Application.Exit();
                 return;
             }
-            
+
             // start listening (does not fully accept connections at this point)
             _lSocket.Listen(5);
             // start the asynchronous accepting process (will wait if necessary)
             _lSocket.BeginAccept(cbAcceptDone, null);
         }
 
-        private void cbAcceptDone (IAsyncResult ar)
+        private void cbAcceptDone(IAsyncResult ar)
         {
             try
             {
                 _cSocket = _lSocket.EndAccept(ar);
                 Invoke(new Action(() => Text = "Connected!"));
+
+                // background the receiver thread, and start it (at point of connection)
+                _RXThread = new Thread(cbRXThread);
+                _RXThread.IsBackground = true;
+                _RXThread.Start();
+
             }
             catch (Exception)
             {
-                
-            } 
+
+            }
+        }
+
+        private void cbRXThread()
+        {
+            // bring the socket into a receiving state
+            while (true)
+            {
+                // rx just the bytes from this pass
+                byte[] transientbuff = new byte[GBufferSize];
+                try
+                {
+                    int iBytesRxed = _cSocket.Receive(transientbuff);
+                    if (iBytesRxed == 0)
+                    {
+                        // soft disco
+                        Invoke(new Action(() => Text = "Soft Disco!"));
+                        return;
+                    }
+
+                    // process data!
+                    Invoke(new Action(() => Text = $"RX: {iBytesRxed} bytes"));
+                }
+                catch (Exception err)
+                {
+                    // hard disco
+                    Invoke(new Action(() => Text = "Hard Disco!"));
+                    return;
+                }
+            }
         }
     }
 }
+
+/*
+
+}
+ */

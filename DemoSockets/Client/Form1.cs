@@ -71,5 +71,15 @@ namespace Client
                 }
             }
         }
+
+        private void UI_B_Send_Click(object sender, EventArgs e)
+        {
+            string s = "hello from the client!";
+
+            byte[] stuff = Encoding.UTF8.GetBytes(s);
+            Text = $"Sending... {stuff.Length} bytes!";
+
+            _cSocket.Send(stuff, stuff.Length, SocketFlags.None);
+        }
     }
 }

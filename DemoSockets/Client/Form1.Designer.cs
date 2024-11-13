@@ -30,6 +30,7 @@
         {
             this.UI_TB_Address = new System.Windows.Forms.TextBox();
             this.UI_B_Connect = new System.Windows.Forms.Button();
+            this.UI_B_Send = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UI_TB_Address
@@ -49,11 +50,22 @@
             this.UI_B_Connect.UseVisualStyleBackColor = true;
             this.UI_B_Connect.Click += new System.EventHandler(this.UI_B_Connect_Click);
             // 
+            // UI_B_Send
+            // 
+            this.UI_B_Send.Location = new System.Drawing.Point(415, 12);
+            this.UI_B_Send.Name = "UI_B_Send";
+            this.UI_B_Send.Size = new System.Drawing.Size(373, 114);
+            this.UI_B_Send.TabIndex = 2;
+            this.UI_B_Send.Text = "Send Data";
+            this.UI_B_Send.UseVisualStyleBackColor = true;
+            this.UI_B_Send.Click += new System.EventHandler(this.UI_B_Send_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.UI_B_Send);
             this.Controls.Add(this.UI_B_Connect);
             this.Controls.Add(this.UI_TB_Address);
             this.Name = "Form1";
@@ -68,6 +80,7 @@
 
         private System.Windows.Forms.TextBox UI_TB_Address;
         private System.Windows.Forms.Button UI_B_Connect;
+        private System.Windows.Forms.Button UI_B_Send;
     }
 }
 
