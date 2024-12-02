@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDI_Demo", "GDI_Demo\GDI_Demo.csproj", "{9A5D26D1-1C57-4631-846A-0B643A94DB7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A5D26D1-1C57-4631-846A-0B643A94DB7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5D26D1-1C57-4631-846A-0B643A94DB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5D26D1-1C57-4631-846A-0B643A94DB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5D26D1-1C57-4631-846A-0B643A94DB7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DA949CA-3B73-41E8-B199-19C020483BD5}
+	EndGlobalSection
+EndGlobal
